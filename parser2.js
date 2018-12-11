@@ -91,5 +91,5 @@ let xmlPathway=getPathway(OnePathway);
 let x2js = new X2JS();
 
 let jsonPathway=x2js.xml_str2json(xmlPathway);
-console.log(jsonPathway);
+
 
