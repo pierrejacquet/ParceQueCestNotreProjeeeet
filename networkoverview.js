@@ -1,15 +1,42 @@
-$.getJSON("KGML/MAPLink.json", function (data) {
-console.log(data);
+var graphsource="path:mmu01100";
+var graphtarget="path:mmu04010";
+var listselected = ["path:mmu05218", "path:mmu04115", "path:mmu04916", "path:mmu04010"];
+
+function filterGraph(cytoscapegraph) {
+  cytoscapegraph.nodes().forEach(function (ele) {
+    if (!listselected.includes(ele.data().id)) {
+      //cytoscapegraph.remove(ele);
+    }
+  });
+  return cytoscapegraph;
+}
+
+
+$.getJSON("KGML/result/MAPLinkJS.json", function (data) {
+  //precy is a the full network object that must be processed before graph rendering.
+  var precy = cytoscape({
+    headless: true,
+    elements: data,
+  });
+
+  var aStar = precy.elements().aStar({ root: precy.$id(graphsource), goal: precy.$id(graphtarget), directed: true });
+  aStar.path.select();
+  console.log(aStar.path);
+  console.log(aStar.distance);
+
+  filterGraph(precy)
+
+  console.log(precy);
   var cy = cytoscape({
     container: document.getElementById("cy"), // container to render in
 
-    elements: data,
+    elements: aStar.path.jsons(),
 
     layout: {
       name: "cola",
       animate: true,
       refresh: 1,
-      maxSimulationTime: 00,
+      maxSimulationTime: 5000,
       ungrabifyWhileSimulating: false,
       fit: false,
       nodeDimensionsIncludeLabels: true,
@@ -37,8 +64,6 @@ console.log(data);
     }, {
       "selector": "node",
       "style": {
-        "width": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-        "height": "mapData(score, 0, 0.006769776522008331, 20, 60)",
         "content": "data(name)",
         "font-size": "12px",
         "text-valign": "center",
@@ -47,25 +72,8 @@ console.log(data);
         "text-outline-color": "#555",
         "text-outline-width": "2px",
         "color": "#fff",
-        "overlay-padding": "6px",
+        //"overlay-padding": "6px",
         "z-index": "10"
-      }
-    }, {
-      "selector": "node[?attr]",
-      "style": {
-        "shape": "rectangle",
-        "background-color": "#aaa",
-        "text-outline-color": "#aaa",
-        "width": "16px",
-        "height": "16px",
-        "font-size": "6px",
-        "z-index": "1"
-      }
-    }, {
-      "selector": "node[?query]",
-      "style": {
-        "background-clip": "none",
-        "background-fit": "contain"
       }
     }, {
       "selector": "node:selected",
@@ -83,8 +91,8 @@ console.log(data);
         "target-arrow-shape": "triangle",
         "opacity": "0.4",
         "line-color": "#bbb",
-        "width": "mapData(weight, 0, 1, 1, 8)",
-        "overlay-padding": "3px"
+        "width": "mapData(weight, 0, 1, 1, 8)"
+        //"overlay-padding": "3px"
       }
     }, {
       "selector": "node.unhighlighted",
@@ -110,66 +118,11 @@ console.log(data);
         "background-color": "#394855",
         "text-outline-color": "#394855"
       }
-    }, {
-      "selector": "edge.filtered",
-      "style": {
-        "opacity": "0"
-      }
-    }, {
-      "selector": "edge[group=\"coexp\"]",
-      "style": {
-        "line-color": "#d0b7d5"
-      }
-    }, {
-      "selector": "edge[group=\"coloc\"]",
-      "style": {
-        "line-color": "#a0b3dc"
-      }
-    }, {
-      "selector": "edge[group=\"gi\"]",
-      "style": {
-        "line-color": "#90e190"
-      }
-    }, {
-      "selector": "edge[group=\"path\"]",
-      "style": {
-        "line-color": "#9bd8de"
-      }
-    }, {
-      "selector": "edge[group=\"pi\"]",
-      "style": {
-        "line-color": "#eaa2a2"
-      }
-    }, {
-      "selector": "edge[group=\"predict\"]",
-      "style": {
-        "line-color": "#f6c384"
-      }
-    }, {
-      "selector": "edge[group=\"spd\"]",
-      "style": {
-        "line-color": "#dad4a2"
-      }
-    }, {
-      "selector": "edge[group=\"spd_attr\"]",
-      "style": {
-        "line-color": "#D0D0D0"
-      }
-    }, {
-      "selector": "edge[group=\"reg\"]",
-      "style": {
-        "line-color": "#D0D0D0"
-      }
-    }, {
-      "selector": "edge[group=\"reg_attr\"]",
-      "style": {
-        "line-color": "#D0D0D0"
-      }
-    }, {
-      "selector": "edge[group=\"user\"]",
-      "style": {
-        "line-color": "#f0ec86"
-      }
     }]
   });
+
+  cy.center();
+
+
+
 });
