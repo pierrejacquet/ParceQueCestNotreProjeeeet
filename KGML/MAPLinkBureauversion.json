@@ -1,0 +1,12 @@
+{  "format_version" : "1.0",
+  "generated_by" : "cytoscape-3.4.0",
+  "target_cytoscapejs_version" : "~2.1",
+  "data" : {
+    "shared_name" : "Network",
+    "name" : "Network",
+    "SUID" : 7430,
+    "shared_name" : "Network",
+    "__Annotations" : [ ],
+    "selected" : true
+  },
+  "elements" : {
