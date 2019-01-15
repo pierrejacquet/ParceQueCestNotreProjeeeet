@@ -28,7 +28,7 @@ def parseGenes(filepath):
   file = open(filepath, "r").read().splitlines()
   for line in file:
     linesplit=line.split("\t")
-    genename=linesplit[1].replace("; ",";").split(";")
+    genename=linesplit[1].replace("; ",";").replace(",,",",").replace(", ",";").split(";") 
     genes_name_reference["Gene"].append({"id":linesplit[0],"name":genename})
   with open("result/mmugenes_parsed.json", 'w') as fp:
     json.dump(genes_name_reference, fp)
