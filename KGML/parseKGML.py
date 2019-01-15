@@ -13,23 +13,23 @@ KGMLs = [f for f in listdir("./kgml_files/")
 
 
 def parseCompounds(filepath):
-  compounds_name_reference={}
+  compounds_name_reference={"Compounds":[]}
   file = open(filepath, "r").read().splitlines()
   for line in file:
     linesplit=line.split("\t")
     compname=linesplit[1].replace(" ","").split(";")
-    compounds_name_reference[linesplit[0]]=compname
+    compounds_name_reference["Compounds"].append({"id":linesplit[0],"name":compname})
   with open("result/compound_parsed.json", 'w') as fp:
     json.dump(compounds_name_reference, fp)
   return compounds_name_reference
 
 def parseGenes(filepath):
-  genes_name_reference={}
+  genes_name_reference={"Gene":[]}
   file = open(filepath, "r").read().splitlines()
   for line in file:
     linesplit=line.split("\t")
     genename=linesplit[1].replace("; ",";").split(";")
-    genes_name_reference[linesplit[0]]=genename
+    genes_name_reference["Gene"].append({"id":linesplit[0],"name":genename})
   with open("result/mmugenes_parsed.json", 'w') as fp:
     json.dump(genes_name_reference, fp)
   return genes_name_reference
