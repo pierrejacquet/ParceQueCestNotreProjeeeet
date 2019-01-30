@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Accueil</title>
+    <style>
+      body{
+        overflow: hidden!important;
+      }
+      #cy {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+        z-index: 0;
+      }
+      #searchbox {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        width: 400px;
+        z-index: 9;
+      }
+      #searchbar {
+        width: 100%;
+      }
+      #result {
+        max-height: 300px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        border: 2px solid #00abff;
+        border-radius: 0px 0px 0px 14px;
+      }
+      .result-item {
+        padding: 10px;
+        word-wrap: break-word;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        background-color: white;
+      }
+      .result-item:hover {
+        border: 2px solid #00abff;
+      }
+      a.button6 {
+        display: inline-block;
+        padding: 0.7em 1.4em;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.15em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #ffffff;
+        background-color: #3369ff;
+        box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+        text-align: center;
+        position: relative;
+      }
+      a.button6:hover {
+        top: 0.1em;
+      }
+      @media all and (max-width: 30em) {
+         a.button6 {
+          display: block;
+          margin: 0.4em auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="precy"></div>
+    <div id="cy"></div>
+
+    <div style="margin-left:50px; position: absolute; top: 10px;right:10px; cursor: pointer;">
+      <a class="button6"></a>
+    </div>
+    
+
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-latest.min.js"
+    ></script>
+    <script src="xml2json.min.js"></script>
+    <script src="cytoscape.min.js"></script>
+
+    <script src="http://marvl.infotech.monash.edu/webcola/cola.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-cola@2.3.0/cytoscape-cola.js"></script>
+    <!-- <script src="parser2.js"></script> -->
+    <!-- <script src="renderGraph.js"></script> -->
+
+    <script src="fuse.min.js"></script>
+    <script src="search.js"></script>
+    <script src="networkoverview.js"></script>
+  </body>
+</html>

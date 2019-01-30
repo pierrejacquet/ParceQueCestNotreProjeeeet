@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Accueil</title>
+    <style>
+      .block {
+        display: inline-table;
+        width: 500px;
+        margin: 50px;
+      }
+      .block-left * {
+        width: 100% !important;
+        box-sizing: border-box;
+      }
+      .block-right * {
+        width: 100% !important;
+        box-sizing: border-box;
+      }
+
+      #searchbox {
+        z-index: 11;
+      }
+
+      #result {
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border: 2px solid #00abff;
+        border-radius: 0px 0px 0px 14px !important;
+      }
+      #result2 {
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border: 2px solid #00abff;
+        border-radius: 0px 0px 0px 14px !important;
+      }
+      .result-item {
+        padding: 10px;
+        word-wrap: break-word;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        background-color: white;
+      }
+      .result-item2 {
+        padding: 10px;
+        word-wrap: break-word;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        background-color: white;
+      }
+      .result-item:hover {
+        border: 2px solid #00abff;
+      }
+
+      #searchbox-pathway,
+      #searchbox2-pathway {
+        margin-top: 100px;
+        z-index: 9;
+      }
+
+      a.button6 {
+        display: inline-block;
+        padding: 0.7em 1.4em;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.15em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #ffffff;
+        background-color: #3369ff;
+        box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+        text-align: center;
+        position: relative;
+      }
+      a.button6:hover {
+        top: 0.1em;
+      }
+      @media all and (max-width: 30em) {
+         a.button6 {
+          display: block;
+          margin: 0.4em auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="block block-left">
+      <div id="searchbox">
+        <p>1. Search a compound/gene name</p>
+        <input
+          id="searchbar"
+          type="text"
+          name="search"
+          placeholder="KEGG ID, compound/gene name..."
+        />
+        <div id="result"></div>
+      </div>
+
+      <div id="searchbox-pathway">
+        <p>2. Pick a pathway with this compound / product of gene</p>
+        <select
+          id="searchbar-pathway"
+          placeholder="Pick a pathway with this compound / product of gene (if it exist)"
+        >
+        </select>
+      </div>
+    </div>
+
+    <div class="block block-right">
+      <div id="searchbox2">
+        <p>3. (Optional) Search a second compound/gene name</p>
+        <input
+          id="searchbar2"
+          type="text"
+          name="search2"
+          placeholder="KEGG ID, compound/gene name..."
+        />
+        <div id="result2"></div>
+      </div>
+
+      <div id="searchbox2-pathway">
+        <p>
+          4. (Optional) Pick a second pathway with this compound / product of
+          gene
+        </p>
+        <select
+          id="searchbar2-pathway"
+          placeholder="Pick a pathway with this compound / product of gene (if it exist)"
+        >
+        </select>
+      </div>
+    </div>
+    <div style="margin-left:50px">
+      <a class="button6">Search path !</a>
+      <a href="something" class="button6" style="background-color:#668fff">Cancel</a>
+    </div>
+    
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-latest.min.js"
+    ></script>
+    <script src="xml2json.min.js"></script>
+
+    <script src="fuse.min.js"></script>
+    <script src="search.js"></script>
+  </body>
+</html>
