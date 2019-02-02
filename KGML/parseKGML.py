@@ -9,8 +9,12 @@ import fileinput
 
 KGMLs = [f for f in listdir("./kgml_files/")
          if isfile(join("./kgml_files/", f))]
-#print (KGMLs)
 
+Map_gene_to_reaction={}
+with open('result/mmu2reaction.json') as handle:
+    Map_gene_to_reaction = json.loads(handle.read())
+
+print (Map_gene_to_reaction)
 
 def parseCompounds(filepath):
   compounds_name_reference={"Compounds":[]}
@@ -29,7 +33,11 @@ def parseGenes(filepath):
   for line in file:
     linesplit=line.split("\t")
     genename=linesplit[1].replace("; ",";").replace(",,",",").replace(", ",";").split(";") 
-    genes_name_reference["Gene"].append({"id":linesplit[0],"name":genename})
+    if linesplit[0] in Map_gene_to_reaction:
+      genes_name_reference["Gene"].append({"id":linesplit[0],"name":genename,"in_reaction":Map_gene_to_reaction[linesplit[0]]})
+    else:
+      genes_name_reference["Gene"].append({"id":linesplit[0],"name":genename})
+
   with open("result/mmugenes_parsed.json", 'w') as fp:
     json.dump(genes_name_reference, fp)
   return genes_name_reference

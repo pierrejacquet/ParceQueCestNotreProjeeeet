@@ -8,6 +8,7 @@
     <style>
       body{
         overflow: hidden!important;
+        font-family: Arial, Helvetica, sans-serif;
       }
       #cy {
         width: 100vw;
@@ -67,6 +68,17 @@
           margin: 0.4em auto;
         }
       }
+      #infobulle{
+          width: 400px;
+          padding: 20px;
+          border-radius: 20px;
+          margin-top:50px;
+          position: absolute;
+          bottom: 10px;
+          right:10px;
+          cursor: pointer;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      }
     </style>
   </head>
 
@@ -78,6 +90,10 @@
       <a class="button6"></a>
     </div>
     
+    <div id="infobulle">
+
+    </div>
+
 
     <script
       type="text/javascript"
@@ -88,10 +104,11 @@
 
     <script src="http://marvl.infotech.monash.edu/webcola/cola.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cytoscape-cola@2.3.0/cytoscape-cola.js"></script>
-    <!-- <script src="parser2.js"></script> -->
-    <!-- <script src="renderGraph.js"></script> -->
 
-    <script src="fuse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.0.0/cytoscape-cose-bilkent.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-expand-collapse@3.1.2/cytoscape-expand-collapse.js"></script>
+
+
     <script src="search.js"></script>
     <script src="networkoverview.js"></script>
   </body>
