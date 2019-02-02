@@ -17,6 +17,7 @@
       .block-right * {
         width: 100% !important;
         box-sizing: border-box;
+
       }
 
       #searchbox {
@@ -90,9 +91,9 @@
   </head>
 
   <body>
-    <div class="block block-left">
+    <div class="block block-left" style="background-color: #70c1b3; padding: 28px; border-radius: 20px">
       <div id="searchbox">
-        <p>1. Search a compound/gene name</p>
+        <p>1. Search a compound/gene name (wait after typing)</p>
         <input
           id="searchbar"
           type="text"
@@ -112,7 +113,7 @@
       </div>
     </div>
 
-    <div class="block block-right">
+    <div class="block block-right"  style="background-color: #f25f5c; padding: 28px; border-radius: 20px">
       <div id="searchbox2">
         <p>3. (Optional) Search a second compound/gene name</p>
         <input
@@ -126,8 +127,7 @@
 
       <div id="searchbox2-pathway">
         <p>
-          4. (Optional) Pick a second pathway with this compound / product of
-          gene
+          4. Pick a second pathway (you can pick the same as 2.)
         </p>
         <select
           id="searchbar2-pathway"
@@ -138,9 +138,11 @@
     </div>
     <div style="margin-left:50px">
       <a class="button6">Search path !</a>
-      <a href="something" class="button6" style="background-color:#668fff">Cancel</a>
+      <a href="something" class="button6" style="background-color:#668fff"
+        >Cancel</a
+      >
     </div>
-    
+
     <script
       type="text/javascript"
       src="http://code.jquery.com/jquery-latest.min.js"
